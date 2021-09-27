@@ -13,6 +13,10 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^2.1.0
+  url_launcher: ^6.0.12
+  provider: ^6.0.1
+  flutter_launcher_icons: ^0.9.2
+  flutter_native_splash: ^1.2.4
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -47,3 +51,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash: # comandos para crear la splash screen: flutter clean / flutter pub get/ flutter pub run flutter_native_splash:create
+  background_image: "assets/100.png"
+  android: true
+  ios: true
+  web: true
+
+flutter_icons: # comando para actualizar el icono:flutter pub run flutter_launcher_icons:main
+  image_path: "assets/100.png"
+  android: true
+  ios: true
