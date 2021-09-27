@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:adivinador_de_numeros/Widgets/backgr.dart';
+import 'package:adivinador_de_numeros/Widgets/btn.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Bienvenido!\nEste juego adivinará el número que usted piense.\nSe le mostraran 7 tarjetas con números y debera indicar si esta o no el que penso.\nluego el programa le leera la mente y vera en pantalla su numero elegido!\nasi de simple.\n\nA JUGAR!!!', 
+                      'Bienvenido!\nEste juego adivinará el número que usted piense.\nSe le mostraràn 7 tarjetas con números y deberá indicar si está o no el que pensó.\nluego el programa le leerá la mente y verà en pantalla su número elegido!\nasí de simple.\n\nA JUGAR!!!',
                       //Comillas triples mantienen los saltos de linea. tambien se puede usar \n
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -38,25 +39,22 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.indigo[600],
                       ),
                     ),
-                    Backgr(
-                      pic: 'btn.png',
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: TextButton(
-                          child: Text(
-                            'iniciar juego',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.indigo[800],
-                            ),
-                          ),
-                          onPressed: () =>
-                              Navigator.pushNamed(context, 'HomeScreen'),
-                        ),
-                      ),
-                    ),
+                    const Btn(text: 'Iniciar juego',),
                   ],
                 ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: FloatingActionButton(
+              backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
+              tooltip: 'opciones',
+              onPressed: () => Navigator.pushNamed(context, 'Configs'),
+              child: Image.asset(
+                'opt.png',
+                height: 35,
+                width: 35,
               ),
             ),
           ),
