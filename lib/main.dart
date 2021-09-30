@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:adivinador_de_numeros/Screens/homeScreen.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:adivinador_de_numeros/Screens/configs.dart';
+import 'package:adivinador_de_numeros/Screens/game.dart';
 
 void main() {
   runApp(const StartHere());
@@ -16,15 +16,13 @@ class StartHere extends StatelessWidget {
       title: 'Adivinador De Numeros',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        //google fonts
-        textTheme: GoogleFonts.imFellEnglishScTextTheme(
-          Theme.of(context).textTheme,
-        ),
+        fontFamily: 'mainFont',
         primarySwatch: Colors.blue,
       ),
       routes: {
         'HomeScreen': (context) => const HomeScreen(),
         'Configs': (context) => const Configs(),
+        'Game': (context) => const Game(),
       },
       home: const SafeArea(child: HomeScreen()),
     );

@@ -29,7 +29,7 @@ class Btn extends StatelessWidget {
               color: Colors.indigo[800],
             ),
           ),
-          onPressed: () => Navigator.pushNamed(context, 'HomeScreen'),
+          onPressed: () => Navigator.pushNamed(context, 'Game'),
         ),
       ),
     );

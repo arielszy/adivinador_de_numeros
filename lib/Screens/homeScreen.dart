@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Bienvenido!\nEste juego adivinará el número que usted piense.\nSe le mostraràn 7 tarjetas con números y deberá indicar si está o no el que pensó.\nluego el programa le leerá la mente y verà en pantalla su número elegido!\nasí de simple.\n\nA JUGAR!!!',
+                      'Bienvenido!\nEste juego adivinará el número que usted piense.\nPrimero que nada debe pensar un número entre 1 y 100.\nSe le mostrarán 7 tarjetas y deberá indicar si está o no el número que pensó.\nluego el programa le leerá la mente y verá en pantalla su número elegido!\nasí de simple.\n\nA JUGAR!!!',
                       //Comillas triples mantienen los saltos de linea. tambien se puede usar \n
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -39,7 +39,9 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.indigo[600],
                       ),
                     ),
-                    const Btn(text: 'Iniciar juego',),
+                    const Btn(
+                      text: 'Iniciar juego',
+                    ),
                   ],
                 ),
               ),
