@@ -3,22 +3,35 @@
 import 'package:flutter/material.dart';
 
 class Backgr extends StatelessWidget {
-  final String pic;
+//  final String pic;
 
   final Widget? child;
 
-  const Backgr({Key? key, required this.pic, this.child}) : super(key: key);
+  const Backgr({Key? key,  this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(pic),
-          fit: BoxFit.fill,
+    return Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('back.jpg'),
+              fit: BoxFit.fill,
+            ),
+          ),
         ),
-      ),
-      child: child,
+        Center(
+          child: Container(
+            margin: const EdgeInsets.all(20),
+            color: const Color.fromRGBO(255, 255, 255, 0.5),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: child,
+            ),
+          ),
+        )
+      ],
     );
   }
 }

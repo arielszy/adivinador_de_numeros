@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class Btn extends StatelessWidget {
   final String text;
+  final String goto;
 
   const Btn({
     Key? key,
     required this.text,
+    required this.goto,
   }) : super(key: key);
 
   @override
@@ -22,15 +24,14 @@ class Btn extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: TextButton(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.indigo[800],
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.indigo[800],
+              ),
             ),
-          ),
-          onPressed: () => Navigator.pushNamed(context, 'Game'),
-        ),
+            onPressed: () => Navigator.of(context).pushReplacementNamed(goto)),
       ),
     );
   }
