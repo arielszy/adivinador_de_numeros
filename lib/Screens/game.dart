@@ -9,28 +9,32 @@ class Game extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Backgr(
-      child: Column(
-        children: [
-          CardWidget(
-              card: cards['1']
-                  .toString()), //hay que agregar toString por null safety. el mapa puede ser null pero Text() no
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Scaffold(
+      body: SafeArea(
+        child: Backgr(
+          child: Column(
             children: [
-              Image.asset(
-                'y.png',
-                width: 75,
-                height: 75,
-              ),
-              Image.asset(
-                'n.png',
-                width: 75,
-                height: 75,
-              ),
+              CardWidget(
+                  card: cards['1']
+                      .toString()), //hay que agregar toString por null safety. el mapa puede ser null pero Text() no
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Image.asset(
+                    'y.png',
+                    width: 75,
+                    height: 75,
+                  ),
+                  Image.asset(
+                    'n.png',
+                    width: 75,
+                    height: 75,
+                  ),
+                ],
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

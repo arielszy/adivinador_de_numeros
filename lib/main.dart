@@ -16,7 +16,7 @@ class StartHere extends StatelessWidget {
     return MaterialApp(
       title: 'Adivinador De Numeros',
       debugShowCheckedModeBanner: false,
-      supportedLocales: const <Locale>[Locale('en'), Locale('es')],
+      supportedLocales: const <Locale>[Locale('en'), Locale('es')], //idiomas
       theme: ThemeData(
         fontFamily: 'mainFont',
         primarySwatch: Colors.blue,
@@ -27,20 +27,7 @@ class StartHere extends StatelessWidget {
         'Game': (context) => const Game(),
         'End': (context) => const End(),
       },
-      home: const A(),
-    );
-  }
-}
-
-class A extends StatelessWidget {
-  const A({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: HomeScreen(),
-      ),
+      initialRoute: 'HomeScreen',
     );
   }
 }
