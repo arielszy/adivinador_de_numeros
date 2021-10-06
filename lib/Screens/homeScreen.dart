@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 40,
                       color: Colors.indigo[800],
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
@@ -31,6 +32,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.indigo[600],
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Btn(

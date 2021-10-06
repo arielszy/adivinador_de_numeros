@@ -17,12 +17,13 @@ class StartHere extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<GameProvider>(create: (context) => GameProvider())
+        ChangeNotifierProvider<GameProvider>(
+            create: (context) => GameProvider())
       ],
       child: MaterialApp(
         title: 'Adivinador De Numeros',
         debugShowCheckedModeBanner: false,
-        supportedLocales: const <Locale>[Locale('en'), Locale('es')], //idiomas
+        //  supportedLocales: const <Locale>[Locale('en'), Locale('es')], //idiomas
         theme: ThemeData(
           fontFamily: 'mainFont',
           primarySwatch: Colors.blue,

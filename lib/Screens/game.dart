@@ -6,19 +6,49 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Game extends StatelessWidget {
-  const Game({Key? key}) : super(key: key);
+  const Game({Key? key, this.next}) : super(key: key);
+
+  final String? next;
 
   @override
   Widget build(BuildContext context) {
     int currentCard = Provider.of<GameProvider>(context).currentCard;
+    /*
+    if (next == 'y') {
+      Provider.of<GameProvider>(context, listen: false).next(next ?? '');
+    } else if (next == 'n') {
+      Provider.of<GameProvider>(context, listen: false).next(next ?? '');
+    }
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return const Game(next: 'n');
+    }));
+ */
     return Scaffold(
       body: SafeArea(
         child: Backgr(
           child: Column(
             children: [
+              Text(
+                'Tarjeta número $currentCard',
+                style: TextStyle(
+                  color: Colors.blue[900],
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
               CardWidget(
                   card: cards[currentCard.toString()]
                       .toString()), //hay que agregar toString por null safety. el mapa puede ser null pero Text() no
+              Text(
+                'El número que usted pensó se encuentra en esta tarjeta?',
+                style: TextStyle(
+                  color: Colors.blue[900],
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -33,10 +63,11 @@ class Game extends StatelessWidget {
                     ),
                     onPressed: () {
                       if (currentCard == 7) {
+                        Navigator.pushReplacementNamed(context, 'End');
                         Provider.of<GameProvider>(context, listen: false)
                             .next('y');
-                        Navigator.pushReplacementNamed(context, 'End');
                       } else {
+                        Navigator.pushReplacementNamed(context, 'Game');
                         Provider.of<GameProvider>(context, listen: false)
                             .next('y');
                       }
@@ -58,10 +89,11 @@ class Game extends StatelessWidget {
                     ),
                     onPressed: () {
                       if (currentCard == 7) {
+                        Navigator.pushReplacementNamed(context, 'End');
                         Provider.of<GameProvider>(context, listen: false)
                             .next('n');
-                        Navigator.pushReplacementNamed(context, 'End');
                       } else {
+                        Navigator.pushReplacementNamed(context, 'Game');
                         Provider.of<GameProvider>(context, listen: false)
                             .next('n');
                       }

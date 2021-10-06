@@ -10,8 +10,8 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
-      height: 400,
+      width: 350,
+      height: 350,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('card.png'),
@@ -23,8 +23,9 @@ class CardWidget extends StatelessWidget {
         child: Text(
           card,
           style: TextStyle(
-            color: Colors.blue[900],
-            fontSize: 25,
+            color: Colors.blue[800],
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
           ),
           textAlign: TextAlign.center,
         ),

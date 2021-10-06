@@ -16,7 +16,10 @@ class End extends StatelessWidget {
         child: Backgr(
           child: Column(
             children: [
-              Text(numberGuessed.toString()),
+              Text(
+                numberGuessed.toString(),
+                style: const TextStyle(fontSize: 20),
+              ),
               const Btn(
                 text: 'reiniciar',
                 goto: 'HomeScreen',
