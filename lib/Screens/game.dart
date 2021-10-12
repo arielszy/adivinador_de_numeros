@@ -6,30 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Game extends StatelessWidget {
-  const Game({Key? key, this.next}) : super(key: key);
-
-  final String? next;
+  const Game({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    int currentCard = Provider.of<GameProvider>(context).currentCard;
-    /*
-    if (next == 'y') {
-      Provider.of<GameProvider>(context, listen: false).next(next ?? '');
-    } else if (next == 'n') {
-      Provider.of<GameProvider>(context, listen: false).next(next ?? '');
-    }
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return const Game(next: 'n');
-    }));
- */
+    var prov = Provider.of<GameProvider>(context, listen: false);
+
     return Scaffold(
       body: SafeArea(
         child: Backgr(
           child: Column(
             children: [
               Text(
-                'Tarjeta número $currentCard',
+                'Tarjeta número ${prov.currentCard}',
                 style: TextStyle(
                   color: Colors.blue[900],
                   fontSize: 30,
@@ -38,7 +27,7 @@ class Game extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               CardWidget(
-                  card: cards[currentCard.toString()]
+                  card: cards[prov.currentCard.toString()]
                       .toString()), //hay que agregar toString por null safety. el mapa puede ser null pero Text() no
               Text(
                 'El número que usted pensó se encuentra en esta tarjeta?',
@@ -52,63 +41,43 @@ class Game extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      elevation: 0,
-                      onPrimary: Colors.transparent,
-                      onSurface: Colors.transparent,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(100))),
-                    ),
-                    onPressed: () {
-                      if (currentCard == 7) {
-                        Navigator.pushReplacementNamed(context, 'End');
-                        Provider.of<GameProvider>(context, listen: false)
-                            .next('y');
-                      } else {
-                        Navigator.pushReplacementNamed(context, 'Game');
-                        Provider.of<GameProvider>(context, listen: false)
-                            .next('y');
-                      }
-                    },
-                    child: Image.asset(
-                      'y.png',
-                      width: 75,
-                      height: 75,
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      elevation: 0,
-                      onPrimary: Colors.transparent,
-                      onSurface: Colors.transparent,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(100))),
-                    ),
-                    onPressed: () {
-                      if (currentCard == 7) {
-                        Navigator.pushReplacementNamed(context, 'End');
-                        Provider.of<GameProvider>(context, listen: false)
-                            .next('n');
-                      } else {
-                        Navigator.pushReplacementNamed(context, 'Game');
-                        Provider.of<GameProvider>(context, listen: false)
-                            .next('n');
-                      }
-                    },
-                    child: Image.asset(
-                      'n.png',
-                      width: 75,
-                      height: 75,
-                    ),
-                  ),
+                  But(prov: prov, t: 'y'),
+                  But(prov: prov, t: 'n'),
                 ],
               )
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class But extends StatelessWidget {
+  const But({Key? key, required this.prov, required this.t}) : super(key: key);
+  final prov;
+  final String t;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.transparent,
+        elevation: 0,
+        onPrimary: Colors.transparent,
+        onSurface: Colors.transparent,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(100))),
+      ),
+      onPressed: () {
+        prov.currentCard == 7
+            ? Navigator.pushReplacementNamed(context, 'End')
+            : Navigator.pushReplacementNamed(context, 'Game');
+        prov.next(t);
+      },
+      child: Image.asset(
+        '$t.png',
+        width: 75,
+        height: 75,
       ),
     );
   }

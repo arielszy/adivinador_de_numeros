@@ -13,15 +13,14 @@ class GameProvider extends ChangeNotifier {
 
   int currentCard = 1;
   int numberGuessed = 0;
+  String btnN = '';
   void next(String btn) {
+    btnN = btn;
     if (btn == 'y' && currentCard <= 8) {
       int ind = add[currentCard.toString()] ?? 0;
       numberGuessed += ind;
     }
     currentCard++;
-
-    print(currentCard);
-    print(numberGuessed);
     notifyListeners();
   }
 
