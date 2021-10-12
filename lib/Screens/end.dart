@@ -15,10 +15,38 @@ class End extends StatelessWidget {
       body: SafeArea(
         child: Backgr(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                numberGuessed.toString(),
-                style: const TextStyle(fontSize: 20),
+                'El número pensado es...',
+                style: TextStyle(
+                  color: Colors.blue[900],
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Container(
+                width: 350,
+                height: 350,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('win.png'),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 100),
+                  child: Center(
+                    child: Text(
+                      numberGuessed.toString(),
+                      style: TextStyle(
+                        fontSize: 60,
+                        color: Colors.brown[100],
+                      ),
+                    ),
+                  ),
+                ),
               ),
               const Btn(
                 text: 'reiniciar',

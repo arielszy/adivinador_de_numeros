@@ -1,8 +1,10 @@
 import 'package:adivinador_de_numeros/Widgets/backgr.dart';
+import 'package:adivinador_de_numeros/Widgets/btn.dart';
 import 'package:adivinador_de_numeros/Widgets/cardWidget.dart';
 import 'package:adivinador_de_numeros/resources/cards_values.dart';
 import 'package:adivinador_de_numeros/resources/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 class Game extends StatelessWidget {
@@ -15,8 +17,15 @@ class Game extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Backgr(
-          child: Column(
+          child: ListView(
             children: [
+              const Align(
+                alignment: Alignment.topRight,
+                child: Btn(
+                  text: 'volver a empezar',
+                  goto: 'HomeScreen',
+                ),
+              ),
               Text(
                 'Tarjeta número ${prov.currentCard}',
                 style: TextStyle(
@@ -40,44 +49,14 @@ class Game extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  But(prov: prov, t: 'y'),
-                  But(prov: prov, t: 'n'),
+                children: const [
+                  But(t: 'y'),
+                  But(t: 'n'),
                 ],
               )
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class But extends StatelessWidget {
-  const But({Key? key, required this.prov, required this.t}) : super(key: key);
-  final prov;
-  final String t;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.transparent,
-        elevation: 0,
-        onPrimary: Colors.transparent,
-        onSurface: Colors.transparent,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(100))),
-      ),
-      onPressed: () {
-        prov.currentCard == 7
-            ? Navigator.pushReplacementNamed(context, 'End')
-            : Navigator.pushReplacementNamed(context, 'Game');
-        prov.next(t);
-      },
-      child: Image.asset(
-        '$t.png',
-        width: 75,
-        height: 75,
       ),
     );
   }

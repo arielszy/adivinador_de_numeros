@@ -4,6 +4,7 @@ import 'package:adivinador_de_numeros/resources/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//main button
 class Btn extends StatelessWidget {
   final String text;
   final String goto;
@@ -16,28 +17,63 @@ class Btn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('btn.png'),
-          fit: BoxFit.fill,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('btn.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: TextButton(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.indigo[50],
+              ),
+            ),
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed(goto);
+              Provider.of<GameProvider>(context, listen: false).reset();
+            },
+          ),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: TextButton(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.indigo[800],
-            ),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushReplacementNamed(goto);
-            Provider.of<GameProvider>(context, listen: false).reset();
-          },
-        ),
+    );
+  }
+}
+
+// yes or no button
+class But extends StatelessWidget {
+  const But({Key? key, required this.t}) : super(key: key);
+  final String t;
+  @override
+  Widget build(BuildContext context) {
+    var prov = Provider.of<GameProvider>(context, listen: false);
+
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.transparent,
+        elevation: 0,
+        onPrimary: Colors.transparent,
+        onSurface: Colors.transparent,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(100))),
+      ),
+      onPressed: () {
+        prov.currentCard == 7
+            ? Navigator.pushReplacementNamed(context, 'End')
+            : Navigator.pushReplacementNamed(context, 'Game');
+        prov.next(t);
+      },
+      child: Image.asset(
+        '$t.png',
+        width: 75,
+        height: 75,
       ),
     );
   }
