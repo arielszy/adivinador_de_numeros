@@ -22,7 +22,7 @@ class Btn extends StatelessWidget {
       child: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('btn.png'),
+            image: AssetImage('../../assets/btn.png'),
             fit: BoxFit.fill,
           ),
         ),
@@ -71,7 +71,7 @@ class But extends StatelessWidget {
         prov.next(t);
       },
       child: Image.asset(
-        '$t.png',
+        '../../assets/$t.png',
         width: 75,
         height: 75,
       ),

@@ -7,7 +7,7 @@ class Backgr extends StatelessWidget {
 
   final Widget? child;
 
-  const Backgr({Key? key,  this.child}) : super(key: key);
+  const Backgr({Key? key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class Backgr extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('back.jpg'),
+              image: AssetImage('../../assets/back.jpg'),
               fit: BoxFit.fill,
             ),
           ),
