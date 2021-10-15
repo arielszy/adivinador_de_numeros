@@ -1,4 +1,4 @@
-name: adivinador_de_numeros
+name: adivinador de numeros
 description: just a game thats guess the number you think.
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
