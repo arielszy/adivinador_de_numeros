@@ -16,7 +16,7 @@ class Backgr extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('../../assets/back.jpg'),
+              image: AssetImage('assets/back.jpg'),
               fit: BoxFit.fill,
             ),
           ),

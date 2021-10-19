@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                 tooltip: 'opciones',
                 onPressed: () => Navigator.pushNamed(context, 'Configs'),
                 child: Image.asset(
-                  '../../assets/opt.png',
+                  'assets/opt.png',
                   height: 35,
                   width: 35,
                 ),

@@ -33,7 +33,7 @@ class End extends StatelessWidget {
                   height: 350,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('../../assets/win.png'),
+                      image: AssetImage('assets/win.png'),
                       fit: BoxFit.contain,
                     ),
                   ),
